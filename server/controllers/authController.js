@@ -7,7 +7,7 @@ const setCookie = (res, token) => {
   res.cookie('token', token, {
     httpOnly: true,
     secure: config.nodeEnv === 'production',
-    sameSite: config.nodeEnv === 'production' ? 'strict' : 'lax',
+    sameSite: config.nodeEnv === 'production' ? 'none' : 'lax',
     maxAge: 7 * 24 * 60 * 60 * 1000,
     signed: true,
   });
@@ -41,7 +41,7 @@ exports.logout = (req, res) => {
     httpOnly: true,
     expires: new Date(0),
     secure: config.nodeEnv === 'production',
-    sameSite: config.nodeEnv === 'production' ? 'strict' : 'lax',
+    sameSite: config.nodeEnv === 'production' ? 'none' : 'lax',
     signed: true,
   });
   res.status(200).json({ success: true, data: { message: 'Logged out successfully.' } });

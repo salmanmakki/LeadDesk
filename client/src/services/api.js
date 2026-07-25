@@ -16,7 +16,7 @@ api.interceptors.response.use(
       !error.config.url?.includes('/api/auth/login') &&
       !error.config.url?.includes('/api/auth/me')
     ) {
-      window.location.href = '/login';
+      window.location.replace('/login');
     }
     return Promise.reject(error);
   }
